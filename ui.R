@@ -5,10 +5,27 @@ ui <- fluidPage(
   
   titlePanel("Bayesian linear regression"),
   br(),
-  h4(
-    "The application is a simple presentation of a bayesian approach to the linear regression.",
-    "We assume that errors has normal distributions with known variation and prior distributions of parameters are also normal."
+  "The application is a simple presentation of a Bayesian approach
+  to the linear regression model with Gaussian noise.",
+  "We assume that:",
+  tags$ul(
+    tags$li(
+      "errors are independent, identically distributed Gaussian distributions
+      with zero mean and known variation (", tags$b("Sigma"), "),"
+    ),
+    tags$li(
+      "prior distribution over parameters is Gaussian with zero mean
+      and known", tags$b("Covariance matrix"), ","
+    ),
+    tags$li(
+      "basis functions are polynomials of order 0, 1 or 2 (",
+      tags$b("Parameters number"), ")."
+    )
   ),
+  br(),
+  "Start playing with the model from selecting points in the sample space.",
+  br(), br(),
+  
   sidebarLayout(
     
     sidebarPanel(
@@ -27,15 +44,15 @@ ui <- fluidPage(
     ),
     
     mainPanel(
-      tags$b(textOutput(outputId = "sample_points")),
+      tags$b("Sample space"),
       br(),
       plotOutput("sample_space", click = "sample_pos"),
       br(),
-      tags$b("Marginal distributions of parameters"),
+      tags$b(textOutput(outputId = "sample_points")),
+      br(),
+      tags$b("Marginal distributions over parameters"),
       plotOutput("dist_prior")
     )
   )
   
 )
-
-# print(ui)

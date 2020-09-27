@@ -137,7 +137,7 @@ server <- function(input, output) {
       
       plot(
         NA,
-        xlab = paste0("b", i), ylab = "pdf",
+        xlab = paste0("b", i), ylab = paste0("d(b", i, "| ...)"),
         xlim = c(b_plot[i, 1], b_plot[i, N_b_plot]),
         ylim = c(0, max(b_bef_dist, b_aft_dist, 1)),
         xaxt = "n", yaxt = "n"
